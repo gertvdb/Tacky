@@ -39,13 +39,11 @@
     display: block;
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 90%;
     overflow: auto;
 }
 
 .theme-component .theme-component-code pre code {
     display: block;
     overflow-x: auto;
-    font-size: 0.9em;
     padding: 0.5em 1.5em;
 }

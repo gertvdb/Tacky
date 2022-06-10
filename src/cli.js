@@ -6,7 +6,6 @@ const { hideBin } = require('yargs/helpers')
 
 const chalk = require('chalk')
 const fs = require("fs");
-const appRootPath = require("app-root-path");
 const path = require("path");
 const prettier = require("prettier");
 const structure = require('./structure');
@@ -49,7 +48,7 @@ yargs(hideBin(process.argv))
                 buildConfig.author = response.author;
 
                 fs.writeFileSync(
-                    path.join(appRootPath.toString(), '/tacky.config.js'),
+                    path.join('./', '/tacky.config.js'),
                     `module.exports = ${prettier.format(JSON.stringify(buildConfig, null, '\t') ,{ semi: false, parser: "json" })};`,
                     'utf8'
                 );
@@ -73,17 +72,22 @@ yargs(hideBin(process.argv))
         (yargs) => {
             return yargs
         }, (argv) => {
-
             const process = require('child_process');
-            const app = process.spawn('nodemon', ['./src/server.js', '--watch', path.join(appRootPath.toString(), appConfig.entry.path), '-e', 'js,css,njk'], {
+            const configFilePath = path.join('./', 'tacky.config.js');
+
+            const rootPath = path.join('./', appConfig.entry.path);
+            const serverPath = path.join(__dirname, 'server.js');
+
+            const app = process.spawn('nodemon', [serverPath, '--watch', rootPath, '--watch', configFilePath, '-e', 'js,css,njk'], {
                 stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
             });
 
             app.on('message', function (event) {
-                console.log(event.type);
+
                 if (event.type === 'start') {
                     console.log('nodemon started');
                 } else if (event.type === 'crash') {
+                    console.log(event)
                     console.log('script crashed for some reason');
                 }
             });

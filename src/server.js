@@ -7,7 +7,6 @@ const fs = require("fs");
 // CSS
 const path = require('path');
 const prettier = require('prettier');
-const appRootPath = require("app-root-path");
 
 // Config
 const { fetchColors, fetchFonts, fetchAtoms, fetchMolecules, fetchOrganisms, fetchPages  } = require('./fetch');
@@ -27,15 +26,15 @@ const processor = postcss([
 
 postcss(processor)
     .process(
-        fs.readFileSync(path.join(appRootPath.toString(), appConfig.entry.path + '/' + appConfig.entry.filename)), {
-            from : path.join(appRootPath.toString(), appConfig.entry.path + '/' + appConfig.entry.filename),
-            to: path.join(appRootPath.toString(), appConfig.output.path + '/' + appConfig.output.filename),
+        fs.readFileSync(path.join('./', appConfig.entry.path + '/' + appConfig.entry.filename)), {
+            from : path.join('./', appConfig.entry.path + '/' + appConfig.entry.filename),
+            to: path.join('./', appConfig.output.path + '/' + appConfig.output.filename),
         }
     )
     .then(result => {
-            mkdirp(path.join(appRootPath.toString(), appConfig.output.path)).then(
+            mkdirp(path.join('./', appConfig.output.path)).then(
                 made =>
-                    fs.writeFile(path.join(appRootPath.toString(), appConfig.output.path + '/' + appConfig.output.filename), result.css, (err) => {})
+                    fs.writeFile(path.join('./', appConfig.output.path + '/' + appConfig.output.filename), result.css, (err) => {})
             )
         }
     );
@@ -49,7 +48,7 @@ const port = 3000
 const nunjucks = require("nunjucks");
 nunjucks.configure(
     [
-        path.join(appRootPath.toString(), '/' + appConfig.entry.path),
+        path.join('./', appConfig.entry.path),
         __dirname + '/../_styleguide/templates'
     ],
     {
@@ -67,10 +66,15 @@ nunjucks.configure(
     }
 );
 
-app.use('/project', express.static(path.join(appRootPath.toString(), '/' + appConfig.output.path)));
+app.use('/project', express.static(path.join('./', appConfig.output.path)));
 app.use('/styleguide', express.static(__dirname + '/../_styleguide/css'));
 
 app.get('/', function(req, res) {
+
+    const configColors = appConfig.base.colors ? appConfig.base.colors : [];
+    const configFonts = appConfig.base.fonts ? appConfig.base.fonts : [];
+    const configAtoms = appConfig.templates.atoms ? appConfig.templates.atoms : [];
+    const configMolecules = appConfig.templates.molecules ? appConfig.templates.molecules : [];
 
     let  data = {
         project: appConfig.project,
@@ -78,9 +82,13 @@ app.get('/', function(req, res) {
         ui_accent: appConfig.ui.accent,
         ui_font: appConfig.ui.font,
         colors:  fetchColors(),
+        color_files: configColors,
         fonts: fetchFonts(),
+        font_files: configFonts,
         atoms: fetchAtoms(),
+        atom_files: configAtoms,
         molecules: fetchMolecules(),
+        molecule_files: configMolecules,
         organisms: fetchOrganisms(),
         pages: fetchPages(),
         cssFile: appConfig.output.filename

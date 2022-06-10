@@ -9,6 +9,8 @@
     <meta name="description" content="Styleguide for {{ project }} by {{ author }}">
     <meta name="author" content="{{ author }}">
 
+    <link rel="icon" href="/styleguide/favicon.svg">
+
     <!--
         Use this default font when styleguide doesn't globally define a base font.
         We only use this in our main index, our previews will render the font from the styleguide.
@@ -29,6 +31,7 @@
     <link type="text/css" href="/styleguide/highlight.css" rel="stylesheet">
     <link type="text/css" href="/styleguide/section.css" rel="stylesheet">
     <link type="text/css" href="/styleguide/color.css" rel="stylesheet">
+    <link type="text/css" href="/styleguide/font.css" rel="stylesheet">
     <link type="text/css" href="/styleguide/component.css" rel="stylesheet">
     <link type="text/css" href="/styleguide/sidebar.css" rel="stylesheet">
 
@@ -41,16 +44,20 @@
 
     <!-- COLORS -->
     <div id="getting-started" class="theme-section theme-section-first">
-        <div class="theme-section-title theme-use-styleguide-font theme-use-styleguide-text-color">Getting started</div>
-        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">A guide for designing and coding projects for <strong>{{ project }}</strong>.</div>
-        <div class="theme-section-tagline theme-use-styleguide-font theme-use-styleguide-text-color">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi ex, dignissim sit amet accumsan a, ultricies et ex. Phasellus ut enim nisl.
-            Nam aliquam augue a facilisis molestie. Vivamus pretium mauris sed odio dictum, non viverra sem consectetur.
-            Nam tincidunt at libero non blandit. Suspendisse sit amet velit ut mi tempor tempus vel et sapien.
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+        <div class="theme-section-title theme-use-styleguide-font theme-use-styleguide-text-color">Styleguide</div>
+        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">
+            A visual guide for the design for the project <strong>{{ project }}</strong>.
             <br/><br/>
-            Nulla iaculis et mauris sit amet rhoncus. Aenean nisi augue, porttitor ac condimentum in, tincidunt nec neque.
-            Donec sit amet dignissim turpis. Vestibulum egestas maximus urna a eleifend. Sed blandit id sem lobortis dictum. Duis in tortor vel orci faucibus viverra.
+            This guide is a document that contains rules and guidelines for a company. This helps to achieve a consistent brand and voice, establishing a
+            unified presence for anyone who engages with the business.
+        </div>
+        <div class="theme-section-tagline theme-use-styleguide-font theme-use-styleguide-text-color">
+            Think of a style guide as the lighthouse your team can rely on to safely execute how you want your company to be perceived.
+            A style guide enables brand consistency for businesses, which is key for several reasons.
+            <br/><br/>
+            From an external perspective, a company style guide separates you from the competition. It also lets customers familiarize themselves
+            with your brand’s identity from a customer experience standpoint. A consistent brand identity delivers a unique customer experience
+            that leaves your audience coming back for more.
         </div>
     </div>
 
@@ -58,9 +65,13 @@
     <div id="colors" class="theme-section">
         <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Colors</div>
         <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Every brand needs some color to stand out.</div>
+        <div class="theme-section-tagline theme-use-styleguide-font theme-use-styleguide-text-color">
+            Color plays an important role in how your brand is perceived.
+            Color evokes feeling. It incites emotion. Here you will find the colors that `{{ project }}` uses to communicate its identity.
+        </div>
     </div>
 
-    {% if color|length %}
+    {% if colors|length %}
         <div class="theme-section theme-component-colors">
             {% for item in colors %}
                 <div class="theme-color">
@@ -76,9 +87,31 @@
     {% else %}
         <div class="theme-section theme-section-empty">
             <div class="theme-message">
-                <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="theme-message-heading">
+                    <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    {% if color_files|length %}
+                        <div class="theme-message-title theme-use-styleguide-font theme-use-styleguide-text-color">No colors found</div>
+                    {% else%}
+                        <div class="theme-message-title theme-use-styleguide-font theme-use-styleguide-text-color">No paths defined</div>
+                    {% endif %}
+                </div>
                 <div class="theme-message-content theme-use-styleguide-font theme-use-styleguide-text-color">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.
+                    {% if color_files|length %}
+                        According to the configuration the colors should be defined in the following files:
+                        {% for file in color_files %}
+                            <i>{{ file }} </i>
+                        {% endfor %}
+                        <br>
+                        No colors are found. Please check your <strong>tacky.config.js</strong>.
+                    {% else %}
+                        Please make sure to add the paths where the colors are located to your <strong>tacky.config.js</strong> file.
+                        <br>Tacky will parse all files in the defined paths and will transform all css variables to color previews.
+                        <br><br>
+                        <strong>tacky.config.js</strong>
+                        <pre><code>module.exports = { base: { colors: ['src/base/colors.css'] }}</code></pre>
+                        <strong>src/base/colors.css</strong>
+                        <pre><code>:root { --primary-color-5: #F454F4; }</code></pre>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -89,32 +122,54 @@
     <div id="fonts" class="theme-section theme-section">
         <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Typography</div>
         <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Building a good font collection is like populating one's wardrobe.</div>
+        <div class="theme-section-tagline theme-use-styleguide-font theme-use-styleguide-text-color">
+            Choosing the right fonts and combining them is like matching an outfit.
+            You need different clothes for different events and occasions.
+            Typography makes a first impression that influences the rest of the design.
+            With the help of a font, you can affect how the user feels.
+        </div>
     </div>
 
     {% if fonts|length %}
         <div class="theme-section theme-component-fonts">
             {% for item in fonts %}
                 <div class="theme-font">
-                    <div class="theme-font-name theme-use-styleguide-text-color" style="font: {{ item.font }};">{{ item.name }}</div>
-                    <div class="theme-font-display">
-                        <div class="theme-font-display-glyph">
-                            <div class="theme-font-display-glyph-title theme-use-styleguide-font theme-use-styleguide-text-color">Glyph</div>
-                            <div class="theme-font-display-glyph-preview theme-use-styleguide-text-color" style="font: {{ item.font }};">Rr</div>
-                        </div>
-                        <div class="theme-font-display-characters">
-                            <div class="theme-font-display-characters-title theme-use-styleguide-font theme-use-styleguide-text-color">Characters</div>
-                            <div class="theme-font-display-characters-preview theme-use-styleguide-text-color" style="font: {{ item.font }};">ABCČĆDĐEFGHIJKLMNOPQRSŠTUVWXYZŽabcčćdđefghijklmnopqrsštuvwxyzžАБВГҐДЂЕЁЄЖЗЅИІЇЙЈКЛЉМНЊОПРСТЋУЎФХЦЧЏШЩЪЫЬЭЮЯабвгґдђеёєжзѕиіїйјклљмнњопрстћуўфхцчџшщъыьэюяΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψωάΆέΈέΉίϊΐΊόΌύΰϋΎΫΏĂÂÊÔƠƯăâêôơư1234567890</div>
-                        </div>
+                    <div class="theme-font-name theme-use-styleguide-text-color theme-use-styleguide-font">{{ item.name }}</div>
+                    <div class="theme-font-preview theme-use-styleguide-text-color" style="font: {{ item.font }};">
+                        Almost before we knew it, we had left the ground.
                     </div>
+                    <div class="theme-font-characters theme-use-styleguide-text-color" style="font: {{ item.font }};">ABCČĆDĐEFGHIJKLMNOPQRSŠTUVWXYZŽabcčćdđefghijklmnopqrsštuvwxyzžАБВГҐДЂЕЁЄЖЗЅИІЇЙЈКЛЉМНЊОПРСТЋУЎФХЦЧЏШЩЪЫЬЭЮЯабвгґдђеёєжзѕиіїйјклљмнњопрстћуўфхцчџшщъыьэюяΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψωάΆέΈέΉίϊΐΊόΌύΰϋΎΫΏĂÂÊÔƠƯăâêôơư1234567890</div>
                 </div>
             {% endfor %}
         </div>
     {% else %}
         <div class="theme-section theme-section-empty">
             <div class="theme-message">
-                <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="theme-message-heading">
+                    <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    {% if font_files|length %}
+                        <div class="theme-message-title theme-use-styleguide-font theme-use-styleguide-text-color">No fonts found</div>
+                    {% else%}
+                        <div class="theme-message-title theme-use-styleguide-font theme-use-styleguide-text-color">No paths defined</div>
+                    {% endif %}
+                </div>
                 <div class="theme-message-content theme-use-styleguide-font theme-use-styleguide-text-color">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.
+                    {% if font_files|length %}
+                        According to the configuration the fonts should be defined in the following files:
+                        {% for file in font_files %}
+                            <i>{{ file }} </i>
+                        {% endfor %}
+                        <br>
+                        No fonts are found. Please check your <strong>tacky.config.js</strong>.
+                    {% else %}
+                        Please make sure to add the paths where the fonts are located to your <strong>tacky.config.js</strong> file.
+                        <br>Tacky will parse all files in the defined paths and will transform all css variables to fonts previews.
+                        <br><br>
+                        <strong>tacky.config.js</strong>
+                        <pre><code>module.exports = { base: { fonts: ['src/base/fonts.css'] }}</code></pre>
+                        <strong>src/base/fonts.css</strong>
+                        <pre><code>:root { --font-medium: 500 1.143rem/1.857rem 'Source Sans Pro', sans-serif; }</code></pre>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -126,6 +181,11 @@
     <div id="atoms" class="theme-section theme-section">
         <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Atoms</div>
         <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">It's the little things that matter the most.</div>
+        <div class="theme-section-tagline theme-use-styleguide-font theme-use-styleguide-text-color">
+            Atoms serve as the foundational building blocks that comprise all our user interfaces.
+            These atoms include basic HTML elements like form labels, inputs, buttons, and others that can’t be broken down any further
+            without ceasing to be functional.
+        </div>
     </div>
 
     {% if atoms|length %}
@@ -152,9 +212,31 @@
     {% else %}
         <div class="theme-section theme-section-empty">
             <div class="theme-message">
-                <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="theme-message-heading">
+                    <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    {% if atom_files|length %}
+                        <div class="theme-message-title theme-use-styleguide-font theme-use-styleguide-text-color">No atoms found</div>
+                    {% else%}
+                        <div class="theme-message-title theme-use-styleguide-font theme-use-styleguide-text-color">No paths defined</div>
+                    {% endif %}
+                </div>
                 <div class="theme-message-content theme-use-styleguide-font theme-use-styleguide-text-color">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.
+                    {% if atom_files|length %}
+                        According to the configuration the atoms should be defined in the following files:
+                        {% for file in atom_files %}
+                            <i>{{ file }} </i>
+                        {% endfor %}
+                        <br><br>
+                        No atoms were found. Please check your <strong>tacky.config.js</strong>.
+                    {% else %}
+                        Please make sure to add the paths where the atoms are located to your <strong>tacky.config.js</strong> file.
+                        <br>Tacky will glob all .njk template file in the defined paths and will create a preview of the component.
+                        <br><br>
+                        <strong>tacky.config.js</strong>
+                        <pre><code>module.exports = { templates: { atoms: ['src/components/atom/**/*.njk'] }}</code></pre>
+                        <strong>src/components/atom/button.njk</strong>
+                        <pre><code> {{ '{% macro default(label) %}  \n' | escape }} {{ '\t <button class="btn">{{ label }}</button> \n' | escape }}{{ ' {% endmacro %} \n\n' | escape }}{{ ' {{ default("my button") }} ' | escape }}</code></pre>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -164,7 +246,11 @@
     <!-- MOLECULES -->
     <div id="molecules" class="theme-section">
         <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Molecules</div>
-        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus.</div>
+        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Coming together is a beginning. Keeping together is progress. Working together is success.</div>
+        <div class="theme-section-tagline theme-use-styleguide-font theme-use-styleguide-text-color">
+            Molecules are relatively simple groups of UI elements functioning together as a unit.
+            For example, a form label, search input, and button can join together to create a search form molecule.
+        </div>
     </div>
 
     {% if molecules|length %}
@@ -191,9 +277,31 @@
     {% else %}
         <div class="theme-section theme-section-empty">
             <div class="theme-message">
-                <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="theme-message-heading">
+                    <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    {% if molecule_files|length %}
+                        <div class="theme-message-title theme-use-styleguide-font theme-use-styleguide-text-color">No molecules found</div>
+                    {% else%}
+                        <div class="theme-message-title theme-use-styleguide-font theme-use-styleguide-text-color">No paths defined</div>
+                    {% endif %}
+                </div>
                 <div class="theme-message-content theme-use-styleguide-font theme-use-styleguide-text-color">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.
+                    {% if molecule_files|length %}
+                        According to the configuration the molecules should be defined in the following files:
+                        {% for file in molecule_files %}
+                            <i>{{ file }} </i>
+                        {% endfor %}
+                        <br><br>
+                        No molecules were found. Please check your <strong>tacky.config.js</strong>.
+                    {% else %}
+                        Please make sure to add the paths where the molecules are located to your <strong>tacky.config.js</strong> file.
+                        <br>Tacky will glob all .njk template file in the defined paths and will create a preview of the component.
+                        <br><br>
+                        <strong>tacky.config.js</strong>
+                        <pre><code>module.exports = { templates: { molecules: ['src/components/molecule/**/*.njk'] }}</code></pre>
+                        <strong>src/components/molecule/button.njk</strong>
+                        <pre><code> {{ '{% import "../../atom/button/button.njk" as button %}  \n' | escape }} {{ '{% import "../../atom/button/link.njk" as link %}  \n' | escape }} {{ '\n' | escape }} {{ '{% macro default(title) %}  \n' | escape }} {{ '<div class="card"> \n' | escape }} {{ '\t <h3>{{title}}</h3> \n' | escape }} {{ '\t <div class="actions"> \n' | escape }} {{ '\t\t {{ link.default("cancel") }} \n' | escape }} {{ '\t\t {{ button.secondary("submit") }} \n' | escape }} {{ '\t </div> \n' | escape }} {{ '</div> \n' | escape }} {{ ' {% endmacro %} \n\n' | escape }}{{ ' {{ default("My Card") }} ' | escape }}</code></pre>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -204,6 +312,10 @@
     <div id="organisms" class="theme-section">
         <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Organisms</div>
         <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Lorem ipsum dolor sit .amet, consectetur adipiscing elit. Mauris nunc tellus</div>
+        <div class="theme-section-tagline theme-use-styleguide-font theme-use-styleguide-text-color">
+            Organisms are relatively complex UI components composed of groups of molecules and/or atoms and/or other organisms.
+            These organisms form distinct sections of an interface.
+        </div>
     </div>
 
     {% if organisms|length %}
@@ -243,6 +355,9 @@
     <div id="pages" class="theme-section">
         <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Pages</div>
         <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus.</div>
+        <div class="theme-section-tagline theme-use-styleguide-font theme-use-styleguide-text-color">
+            Pages are specific templates that show what a UI looks like with real representative content in place.
+        </div>
     </div>
 
     {% if pages|length %}

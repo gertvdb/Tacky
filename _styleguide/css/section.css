@@ -14,12 +14,16 @@
 }
 
 .theme-section .theme-section-title.theme-section-title-highlight{
-  color:var(--styleguide-accent);
+  color: var(--styleguide-accent);
 }
 
 .theme-section .theme-section-tagline.theme-section-tagline-first {
     font-size: 16px;
     line-height: 1.8;
+}
+
+.theme-section .theme-section-tagline.theme-section-tagline-first strong {
+    color: var(--styleguide-accent);
 }
 
 .theme-section .theme-section-tagline {

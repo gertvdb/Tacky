@@ -1,0 +1,12 @@
+<svg width="17px" height="15px" viewBox="0 0 17 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="favicon" transform="translate(0.000000, -4.000000)">
+            <polygon id="Path" points="0 4 16 4 16 20 0 20"></polygon>
+            <polygon id="Path" fill="#3C3B82" transform="translate(8.308505, 8.308505) rotate(45.000000) translate(-8.308505, -8.308505) " points="14.5585047 2.80850468 9.05850468 2.80850468 2.05850468 13.8085047 7.55850468 13.8085047"></polygon>
+            <polygon id="Path" fill="#373669" points="8 7 13 7 13 17 8 17"></polygon>
+            <circle id="Oval" fill="#DD454A" cx="4.25" cy="6.25" r="2.25"></circle>
+            <path d="M13.33,14 L13,17 C11.34,17 10,15.66 10,14 C10,12.34 11.34,11 13,11 L13.33,14 Z" id="Path" fill="#8381E7"></path>
+            <path d="M13,13 C14.66,13 16,14.34 16,16 C16,17.66 14.66,19 13,19" id="Path" fill="#A5A4F1"></path>
+        </g>
+    </g>
+</svg>

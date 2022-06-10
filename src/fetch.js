@@ -1,7 +1,8 @@
 const glob = require("glob");
 const { parseFileSync } = require('css-variables-parser');
-const appConfig = require("./config").read();
+const appConfig = require(__dirname + "/config").read();
 const path = require("path");
+const validateColor = require("validate-color").default;
 
 /**
  * Fetch colors
@@ -18,7 +19,9 @@ function fetchColors() {
                 const variables = parseFileSync(file);
                 if (variables) {
                     Object.keys(variables).forEach(function (key) {
-                        colors.push({'name': key, 'color' : variables[key]});
+                        if (validateColor(variables[key])) {
+                            colors.push({'name': key, 'color': variables[key]});
+                        }
                     })
                 }
             });
