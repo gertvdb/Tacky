@@ -1,0 +1,38 @@
+.theme-component-colors {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 70px 70px 65px;
+}
+
+.theme-color {
+    display: flex;
+    width: calc(100% / 3);
+    padding: 20px 0;
+}
+
+.theme-color .theme-color-display {
+    box-shadow: rgba(39, 51, 68, .1) 0 4px 7px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    margin-right: 35px;
+}
+
+.theme-color .theme-color-info {
+
+}
+
+.theme-color .theme-color-info-hex {
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.theme-color .theme-color-info-name {
+    color: #888888;
+}

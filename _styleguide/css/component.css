@@ -1,0 +1,51 @@
+.theme-component {
+
+}
+
+.theme-component .theme-component-title {
+    font-weight: 400;
+    font-size: 1.4em;
+    text-transform: capitalize;
+    color: #909090;
+}
+
+.theme-component .theme-component-preview {
+    margin: 20px 0;
+    border: 3px solid #f7f7f7;
+}
+.theme-component .theme-component-code-label,
+.theme-component .theme-component-preview-label {
+    margin: 0;
+    padding: 0.5em 1.5em;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    color: #888;
+    border-bottom: 1px solid #f7f7f7;
+    background: #f7f7f7;
+}
+.theme-component .theme-component-preview-display {
+    padding: 1.5em 1.5em;
+}
+
+.theme-component .theme-component-code {
+
+}
+.theme-component .theme-component-code-display {
+
+}
+
+.theme-component .theme-component-code pre {
+    font-family: "Source Code Pro", "Courier New", Courier, monospace;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 90%;
+    overflow: auto;
+}
+
+.theme-component .theme-component-code pre code {
+    display: block;
+    overflow-x: auto;
+    font-size: 0.9em;
+    padding: 0.5em 1.5em;
+}

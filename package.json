@@ -1,0 +1,42 @@
+{
+  "name": "@gertvdb/tacky",
+  "version": "1.0.0",
+  "description": "Tacky ===",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gert <gertvandenbuijs@hotmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^3.0.0",
+    "autoprefixer": "^10.4.7",
+    "chalk": "4.1.2",
+    "connect-livereload": "^0.6.1",
+    "css-variables-parser": "^1.0.1",
+    "cssnano": "^5.1.11",
+    "express": "^4.18.1",
+    "fs": "^0.0.1-security",
+    "glob": "^8.0.3",
+    "json-to-css-variables": "^1.0.0",
+    "livereload": "^0.9.3",
+    "mkdirp": "^1.0.4",
+    "nodemon": "^2.0.16",
+    "nunjucks": "^3.2.3",
+    "postcss": "^8.4.14",
+    "postcss-custom-media": "^8.0.2",
+    "postcss-import": "^14.1.0",
+    "postcss-media-minmax": "^5.0.0",
+    "postcss-nesting": "^10.1.8",
+    "postcss-pseudo-class-any-link": "^7.1.4",
+    "prettier": "^2.6.2",
+    "prompts": "^2.4.2",
+    "yargs": "^17.5.1"
+  },
+  "bin": {
+    "tacky": "./src/cli.js"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}

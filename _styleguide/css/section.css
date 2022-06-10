@@ -1,0 +1,35 @@
+.theme-section {
+    padding: 5vw;
+    border-bottom: 1px solid #F0EFFF;
+}
+
+.theme-section-first {
+    margin-top: 70px;
+}
+
+.theme-section .theme-section-title {
+    font-weight: 400;
+    font-size: 24px;
+    text-transform: capitalize;
+}
+
+.theme-section .theme-section-title.theme-section-title-highlight{
+  color:var(--styleguide-accent);
+}
+
+.theme-section .theme-section-tagline.theme-section-tagline-first {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.theme-section .theme-section-tagline {
+    display: block;
+    margin-top: 20px;
+    color: #4f566b;
+    max-width: 680px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.theme-section .theme-section-tagline strong {
+    color: #1d2731;
+}

@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+.theme-use-styleguide-text-color {
+    color: #1d2731;
+}
+
+.theme-use-styleguide-font {
+    font-family: var(--styleguide-font);
+}
+
+.theme-page {
+    display: block;
+    min-height: calc(100vh - 50px);
+    background: #FFFFFF;
+    overflow-x: hidden;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.theme-content {
+    background: #FFFFFF !important;
+    margin-left: 280px;
+}
+
+.theme-message {
+    border: 1px solid #f4d0d0;
+    padding: 30px 50px 40px 30px;
+    border-radius: 8px;
+    max-width: 680px;
+    background: #ffebeb;
+    color: #ffa0a0;
+    display: flex;
+}
+
+.theme-message-svg {
+    min-width: 24px;
+    margin-right: 20px;
+}
+
+.theme-message-content {
+    font-size: 14px;
+    color: #FF8484;
+}

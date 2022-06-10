@@ -1,0 +1,342 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ project }} | Styleguide</title>
+    <meta name="description" content="Styleguide for {{ project }} by {{ author }}">
+    <meta name="author" content="{{ author }}">
+
+    <!--
+        Use this default font when styleguide doesn't globally define a base font.
+        We only use this in our main index, our previews will render the font from the styleguide.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <style>
+
+        :root {
+            --styleguide-font : {{ ui_font }};
+            --styleguide-accent: {{ ui_accent }};
+        }
+
+    </style>
+
+    <link type="text/css" href="/styleguide/global.css" rel="stylesheet">
+    <link type="text/css" href="/styleguide/highlight.css" rel="stylesheet">
+    <link type="text/css" href="/styleguide/section.css" rel="stylesheet">
+    <link type="text/css" href="/styleguide/color.css" rel="stylesheet">
+    <link type="text/css" href="/styleguide/component.css" rel="stylesheet">
+    <link type="text/css" href="/styleguide/sidebar.css" rel="stylesheet">
+
+    <link type="text/css" href="/project/{{ cssFile }}" rel="stylesheet">
+</head>
+
+<body class="theme-page">
+
+<div class="theme-content">
+
+    <!-- COLORS -->
+    <div id="getting-started" class="theme-section theme-section-first">
+        <div class="theme-section-title theme-use-styleguide-font theme-use-styleguide-text-color">Getting started</div>
+        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">A guide for designing and coding projects for <strong>{{ project }}</strong>.</div>
+        <div class="theme-section-tagline theme-use-styleguide-font theme-use-styleguide-text-color">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mi ex, dignissim sit amet accumsan a, ultricies et ex. Phasellus ut enim nisl.
+            Nam aliquam augue a facilisis molestie. Vivamus pretium mauris sed odio dictum, non viverra sem consectetur.
+            Nam tincidunt at libero non blandit. Suspendisse sit amet velit ut mi tempor tempus vel et sapien.
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            <br/><br/>
+            Nulla iaculis et mauris sit amet rhoncus. Aenean nisi augue, porttitor ac condimentum in, tincidunt nec neque.
+            Donec sit amet dignissim turpis. Vestibulum egestas maximus urna a eleifend. Sed blandit id sem lobortis dictum. Duis in tortor vel orci faucibus viverra.
+        </div>
+    </div>
+
+    <!-- COLORS -->
+    <div id="colors" class="theme-section">
+        <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Colors</div>
+        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Every brand needs some color to stand out.</div>
+    </div>
+
+    {% if color|length %}
+        <div class="theme-section theme-component-colors">
+            {% for item in colors %}
+                <div class="theme-color">
+                    <div class="theme-color-display" style="background-color: {{ item.color }}">
+                    </div>
+                    <div class="theme-color-info">
+                        <div class="theme-color-info-hex theme-use-styleguide-font theme-use-styleguide-text-color">{{ item.color }}</div>
+                        <div class="theme-color-info-name theme-use-styleguide-font theme-use-styleguide-text-color">{{ item.name }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="theme-section theme-section-empty">
+            <div class="theme-message">
+                <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="theme-message-content theme-use-styleguide-font theme-use-styleguide-text-color">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- END COLORS -->
+
+    <!-- FONTS -->
+    <div id="fonts" class="theme-section theme-section">
+        <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Typography</div>
+        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Building a good font collection is like populating one's wardrobe.</div>
+    </div>
+
+    {% if fonts|length %}
+        <div class="theme-section theme-component-fonts">
+            {% for item in fonts %}
+                <div class="theme-font">
+                    <div class="theme-font-name theme-use-styleguide-text-color" style="font: {{ item.font }};">{{ item.name }}</div>
+                    <div class="theme-font-display">
+                        <div class="theme-font-display-glyph">
+                            <div class="theme-font-display-glyph-title theme-use-styleguide-font theme-use-styleguide-text-color">Glyph</div>
+                            <div class="theme-font-display-glyph-preview theme-use-styleguide-text-color" style="font: {{ item.font }};">Rr</div>
+                        </div>
+                        <div class="theme-font-display-characters">
+                            <div class="theme-font-display-characters-title theme-use-styleguide-font theme-use-styleguide-text-color">Characters</div>
+                            <div class="theme-font-display-characters-preview theme-use-styleguide-text-color" style="font: {{ item.font }};">ABCČĆDĐEFGHIJKLMNOPQRSŠTUVWXYZŽabcčćdđefghijklmnopqrsštuvwxyzžАБВГҐДЂЕЁЄЖЗЅИІЇЙЈКЛЉМНЊОПРСТЋУЎФХЦЧЏШЩЪЫЬЭЮЯабвгґдђеёєжзѕиіїйјклљмнњопрстћуўфхцчџшщъыьэюяΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρστυφχψωάΆέΈέΉίϊΐΊόΌύΰϋΎΫΏĂÂÊÔƠƯăâêôơư1234567890</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="theme-section theme-section-empty">
+            <div class="theme-message">
+                <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="theme-message-content theme-use-styleguide-font theme-use-styleguide-text-color">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- END TYPOGRAPHY -->
+
+    <!-- ATOMS -->
+    <div id="atoms" class="theme-section theme-section">
+        <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Atoms</div>
+        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">It's the little things that matter the most.</div>
+    </div>
+
+    {% if atoms|length %}
+        {% for item in atoms %}
+        {% set toInclude %}
+            {% include item.include %}
+        {% endset %}
+        <div id="atom--{{ item.name }}" class="theme-section theme-component">
+            <div class="theme-component-title theme-use-styleguide-font theme-use-styleguide-text-color">{{ item.name }}</div>
+            <div class="theme-component-preview">
+                <div class="theme-component-preview-label theme-use-styleguide-font theme-use-styleguide-text-color">Preview</div>
+                <div class="theme-component-preview-display">
+                    {% include item.include %}
+                </div>
+            </div>
+            <div class="theme-component-code">
+                <div class="theme-component-code-label theme-use-styleguide-font theme-use-styleguide-text-color">Code</div>
+                <div class="theme-component-code-display">
+                    <pre><code>{{ toInclude|code }}</code></pre>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="theme-section theme-section-empty">
+            <div class="theme-message">
+                <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="theme-message-content theme-use-styleguide-font theme-use-styleguide-text-color">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- END ATOMS -->
+
+    <!-- MOLECULES -->
+    <div id="molecules" class="theme-section">
+        <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Molecules</div>
+        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus.</div>
+    </div>
+
+    {% if molecules|length %}
+        {% for item in molecules %}
+            {% set toInclude %}
+                {% include item.include %}
+            {% endset %}
+            <div id="molecule--{{ item.name }}" class="theme-section theme-component">
+                <div class="theme-component-title theme-use-styleguide-font theme-use-styleguide-text-color">{{ item.name }}</div>
+                <div class="theme-component-preview">
+                    <div class="theme-component-preview-label theme-use-styleguide-font theme-use-styleguide-text-color">Preview</div>
+                    <div class="theme-component-preview-display">
+                        {% include item.include %}
+                    </div>
+                </div>
+                <div class="theme-component-code">
+                    <div class="theme-component-code-label theme-use-styleguide-font theme-use-styleguide-text-color">Code</div>
+                    <div class="theme-component-code-display">
+                        <pre><code>{{ toInclude|code }}</code></pre>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="theme-section theme-section-empty">
+            <div class="theme-message">
+                <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="theme-message-content theme-use-styleguide-font theme-use-styleguide-text-color">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- END MOLECULES -->
+
+    <!-- ORGANISMS -->
+    <div id="organisms" class="theme-section">
+        <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Organisms</div>
+        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Lorem ipsum dolor sit .amet, consectetur adipiscing elit. Mauris nunc tellus</div>
+    </div>
+
+    {% if organisms|length %}
+        {% for item in organisms %}
+            {% set toInclude %}
+                {% include item.include %}
+            {% endset %}
+            <div id="organism--{{ item.name }}" class="theme-section theme-component">
+                <div class="theme-component-title theme-use-styleguide-font theme-use-styleguide-text-color">{{ item.name }}</div>
+                <div class="theme-component-preview">
+                    <div class="theme-component-preview-label theme-use-styleguide-font theme-use-styleguide-text-color">Preview</div>
+                    <div class="theme-component-preview-display">
+                        {% include item.include %}
+                    </div>
+                </div>
+                <div class="theme-component-code">
+                    <div class="theme-component-code-label theme-use-styleguide-font theme-use-styleguide-text-color">Code</div>
+                    <div class="theme-component-code-display">
+                        <pre><code>{{ toInclude|code }}</code></pre>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="theme-section theme-section-empty">
+            <div class="theme-message">
+                <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="theme-message-content theme-use-styleguide-font theme-use-styleguide-text-color">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- END ORGANISMS -->
+
+    <!-- PAGES -->
+    <div id="pages" class="theme-section">
+        <div class="theme-section-title theme-section-title-highlight theme-use-styleguide-font theme-use-styleguide-text-color">Pages</div>
+        <div class="theme-section-tagline theme-section-tagline-first theme-use-styleguide-font theme-use-styleguide-text-color">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus.</div>
+    </div>
+
+    {% if pages|length %}
+        {% for item in pages %}
+
+        {% endfor %}
+    {% else %}
+        <div class="theme-section theme-section-empty">
+            <div class="theme-message">
+                <svg class="theme-message-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div class="theme-message-content theme-use-styleguide-font theme-use-styleguide-text-color">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc tellus, convallis quis cursus in, porta nec quam. Duis at quam at ligula pharetra sagittis at nec augue.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- END PAGES -->
+
+</div>
+<div class="theme-sidebar">
+
+    <!-- ATOMS -->
+    <a href="#getting-started" class="theme-sidebar-category theme-use-styleguide-font theme-use-styleguide-text-color">Getting started</a>
+    <a href="#getting-started" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">Introduction</a>
+
+    <!-- Variables -->
+    <a href="#colors" class="theme-sidebar-category theme-use-styleguide-font theme-use-styleguide-text-color">Variables</a>
+    <a href="#colors" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">Colors</a>
+    <a href="#fonts" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">Typography</a>
+
+    <!-- ATOMS -->
+    <a href="#atoms" class="theme-sidebar-category theme-use-styleguide-font theme-use-styleguide-text-color">Atoms</a>
+    {% if atoms|length %}
+        {% for item in atoms %}
+            <a href="#atom--{{ item.name }}" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">{{ item.name }}</a>
+        {% endfor %}
+    {% else %}
+        <a href="#atoms" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">Atom</a>
+    {% endif %}
+
+    <!-- MOLECULES -->
+    <a href="#molecules" class="theme-sidebar-category theme-use-styleguide-font theme-use-styleguide-text-color">Molecules</a>
+    {% if molecules|length %}
+        {% for item in molecules %}
+            <a href="#molecule--{{ item.name }}" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">{{ item.name }}</a>
+        {% endfor %}
+    {% else %}
+        <a href="#molecules" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">Molecule</a>
+    {% endif %}
+
+    <!-- ORGANISMS -->
+    <a href="#organisms" class="theme-sidebar-category theme-use-styleguide-font theme-use-styleguide-text-color">Organisms</a>
+    {% if organisms|length %}
+        {% for item in organisms %}
+            <a href="#organism--{{ item.name }}" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">{{ item.name }}</a>
+        {% endfor %}
+    {% else %}
+        <a href="#organisms" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">Organism</a>
+    {% endif %}
+
+    <!-- PAGES -->
+    <a href="#pages" class="theme-sidebar-category theme-use-styleguide-font theme-use-styleguide-text-color">Pages</a>
+    {% if pages|length %}
+        {% for item in pages %}
+            <a href="/page/{{ item.name }}" target="_blank" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">{{ item.name }}</a>
+        {% endfor %}
+    {% else %}
+        <a href="#pages" class="theme-sidebar-category-item theme-use-styleguide-font theme-use-styleguide-text-color">Page</a>
+    {% endif %}
+</div>
+
+<!-- your content here... -->
+<!--
+<script src="js/scripts.js"></script>
+-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    jQuery(document).ready(function(){
+        window.addEventListener('popstate', function(event)
+        {
+            if(window.location.hash) {
+                let hash = window.location.hash;
+                jQuery('a.theme-sidebar-category-item[href^="#"]').each(function () {
+                    let that = jQuery(this);
+                    that.removeClass('active');
+                    if (that.attr('href') === hash) {
+                        that.addClass('active');
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
